@@ -1,36 +1,35 @@
 # Cancan::Export
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cancan/export`. To experiment with that code, run `bin/console` for an interactive prompt.
+It is the rewrite of a vital parts of CanCan v.1.13.1 classes: Ability and Rule.  
+All method names writen in a snake case is rewrites of the CanCan ones.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cancan-export'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cancan-export
+This rewrite is simplified since we don't have ORM objects and real DB relations.  
+All we have on the client-side is plain old objects,   
+though as long as each object has `_type' or `type' property, it can be identified as an object of a specific model.
 
 ## Usage
 
-TODO: Write usage instructions here
+```javascript
+ability = new CanCanAbility(gon)
+ability.can('read', 'CustomerOrder')
+// => true or false
+customerOrder = {partner_id: 123} 
+// or with restmod
+customerOrder = CustomerOrder.$build({ partner_id: 123 });
+ability.can('edit', customerOrder)
+// => true, if a partner can edit only his orders and gon.user.partner_id == 123
+```
 
-## Development
+### With angular
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake false` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cancan-export.
-
+```javascript
+// include CanCan service into the $rootScope,
+  MyApp.run(['$rootScope', 'CanCan', function($rootScope, CanCan) {
+    angular.extend $rootScope, CanCan
+    ...
+  ])
+// then, in templates you can authorize parts like
+  can('edit', customerOrder)
+// and check the permissions in a controller like
+  $scope.can('edit', $scope.customerOrder)
+```

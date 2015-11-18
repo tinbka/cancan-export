@@ -5,9 +5,9 @@ require 'cancan/export/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cancan-export"
-  spec.version       = Cancan::Export::VERSION
+  spec.version       = CanCan::Export::VERSION
   spec.authors       = ["Sergey Baev"]
-  spec.email         = ["sbaev@at-consulting.ru"]
+  spec.email         = ["tinbka@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
@@ -28,4 +28,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
+  
+  spec.add_dependency "gon"
+  spec.add_dependency "opal"
+  spec.add_dependency "coffee-rails"
 end
