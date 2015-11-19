@@ -7,11 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "cancan-export"
   spec.version       = CanCan::Export::VERSION
   spec.authors       = ["Sergey Baev"]
-  spec.email         = ["tinbka@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/tinbka/cancan-export"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
@@ -30,6 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   
   spec.add_dependency "gon"
-  spec.add_dependency "opal"
   spec.add_dependency "coffee-rails"
 end
