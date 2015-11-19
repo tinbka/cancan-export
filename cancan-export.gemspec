@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = CanCan::Export::VERSION
   spec.authors       = ["Sergey Baev"]
 
-  spec.summary       = "I'll write a short summary, of course, because Rubygems requires one."
+  spec.summary       = "Exports CanCan rules to the client-side."
   spec.homepage      = "https://github.com/tinbka/cancan-export"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
