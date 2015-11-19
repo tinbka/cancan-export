@@ -22,6 +22,7 @@ module CanCan
         coffeefied_source_lines.gsub!(/\.(\w+)\?/, '.is_\1()') # .present? -> .present()
         coffeefied_source_lines.gsub!(/\.(\w+)!/, '.do_\1()') # .sub! -> .sub!()
         coffeefied_source_lines.gsub!(/(\d+)\.([a-z_]+)/, '(\1).\2()') # 4.hours -> (4).hours()
+        coffeefied_source_lines.gsub!(/:([\w\d]+)/, '"\1"') # 4.hours -> (4).hours()
         #$log.info coffeefied_source_lines, caller_at: [0, 9..20]
         
         @js[source_lines] = CoffeeScript.compile "(#{arguments*', '}) ->\n#{coffeefied_source_lines}", bare: true

@@ -13,9 +13,9 @@ though as long as each object has `_type' or `type' property, it can be identifi
 ability = new CanCanAbility(gon)
 ability.can('read', 'CustomerOrder')
 // => true or false
-customerOrder = {partner_id: 123} 
+customerOrder = {partner_id: 123}
 // or with restmod
-customerOrder = CustomerOrder.$build({ partner_id: 123 });
+customerOrder = CustomerOrder.$build({ partner_id: 123 })
 ability.can('edit', customerOrder)
 // => true, if a partner can edit only his orders and gon.user.partner_id == 123
 ```
@@ -25,9 +25,9 @@ ability.can('edit', customerOrder)
 ```javascript
 // include CanCan service into the $rootScope,
   MyApp.run(['$rootScope', 'CanCan', function($rootScope, CanCan) {
-    angular.extend $rootScope, CanCan
+    angular.extend($rootScope, CanCan);
     ...
-  ])
+  }])
 // then, in templates you can authorize parts like
   can('edit', customerOrder)
 // and check the permissions in a controller like

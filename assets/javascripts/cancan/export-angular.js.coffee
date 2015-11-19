@@ -19,6 +19,6 @@
         .service 'CanCan', ->
             ability: new CanCanAbility(window.gon)
             getAbility: (object) -> @ability = new CanCanAbility(object)
-            can: (action, subject) -> @ability.can action, subject
-            cannot: (action, subject) -> @ability.cannot action, subject
+            can: (action, subject, argsForBlock...) -> @ability.can action, subject, argsForBlock...
+            cannot: (action, subject, argsForBlock...) -> @ability.cannot action, subject, argsForBlock...
 )

@@ -46,8 +46,8 @@
         
       match and match.baseBehavior or false
     
-    cannot: (action, object) ->
-      !@can action, object
+    cannot: (action, object, extra_args...) ->
+      !@can action, object, extra_args...
       
       
     typeOf: (subject) ->
@@ -58,7 +58,7 @@
           
     relevant_rules: (action, subject) ->
       i = 0
-      _(@rules.reverse()).filter (rule) =>
+      _.clone(@rules).reverse().filter (rule) =>
         _(rule.subjects).include(@typeOf subject) and rule.is_relevant action, subject
       
     
