@@ -6,7 +6,7 @@ module CanCan
         super.tap do |g|
           if current_user
             g.user ||= current_user
-            g.ability ||= ::Ability.new(g.user)
+            g.ability ||= current_ability
           end
         end
       end
