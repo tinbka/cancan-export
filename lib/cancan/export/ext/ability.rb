@@ -13,6 +13,10 @@ module CanCan
         }.to_h
       end
       
+      def user_as(property_name)
+        @user_property = property_name
+      end
+      
       def helper_methods
         @helpers ||= {}
       end
@@ -25,7 +29,8 @@ module CanCan
           rulesIndex: @rules_index.map {|object, indices|
             [object.to_s, indices]
           }.to_h,
-          helpersSource: helper_methods
+          helpersSource: helper_methods,
+          userProperty: @user_property
         }.to_json(options)
       end
     

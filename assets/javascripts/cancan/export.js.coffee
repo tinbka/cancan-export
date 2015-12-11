@@ -27,8 +27,8 @@
       
     # @ data : [gon Object]
     constructor: (data) ->
-        @user = data.user
         $.extend @, data.ability
+        @[@userProperty or 'user'] = data.user
       
         # Import each helper defined in ruby's Ability object.
         # `this' must be the object in which context `user' property is defined, thus it is Ability itself
